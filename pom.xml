@@ -16,6 +16,7 @@
         <module>mall-member</module>
         <module>mall-order</module>
         <module>mall-product</module>
+        <module>gmall-admin</module>
     </modules>
 
 
