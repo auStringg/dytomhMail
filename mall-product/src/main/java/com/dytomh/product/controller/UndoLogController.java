@@ -3,7 +3,6 @@ package com.dytomh.product.controller;
 import java.util.Arrays;
 import java.util.Map;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,10 +16,13 @@ import com.dytomh.common.utils.PageUtils;
 import com.dytomh.common.utils.R;
 
 
+
 /**
+ * 
+ *
  * @author qjf
  * @email qjfyouxiang@gmail.com
- * @date 2023-03-21 23:34:49
+ * @date 2023-03-22 20:48:16
  */
 @RestController
 @RequestMapping("product/undolog")
@@ -32,8 +34,8 @@ public class UndoLogController {
      * 列表
      */
     @RequestMapping("/list")
-
-    public R list(@RequestParam Map<String, Object> params) {
+//   @RequiresPermissions("product:undolog:list")
+    public R list(@RequestParam Map<String, Object> params){
         PageUtils page = undoLogService.queryPage(params);
 
         return R.ok().put("page", page);
@@ -44,9 +46,9 @@ public class UndoLogController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-
-    public R info(@PathVariable("id") Long id) {
-        UndoLogEntity undoLog = undoLogService.getById(id);
+//     @RequiresPermissions("product:undolog:info")
+    public R info(@PathVariable("id") Long id){
+		UndoLogEntity undoLog = undoLogService.getById(id);
 
         return R.ok().put("undoLog", undoLog);
     }
@@ -55,9 +57,9 @@ public class UndoLogController {
      * 保存
      */
     @RequestMapping("/save")
-
-    public R save(@RequestBody UndoLogEntity undoLog) {
-        undoLogService.save(undoLog);
+//     @RequiresPermissions("product:undolog:save")
+    public R save(@RequestBody UndoLogEntity undoLog){
+		undoLogService.save(undoLog);
 
         return R.ok();
     }
@@ -66,9 +68,9 @@ public class UndoLogController {
      * 修改
      */
     @RequestMapping("/update")
-
-    public R update(@RequestBody UndoLogEntity undoLog) {
-        undoLogService.updateById(undoLog);
+//     @RequiresPermissions("product:undolog:update")
+    public R update(@RequestBody UndoLogEntity undoLog){
+		undoLogService.updateById(undoLog);
 
         return R.ok();
     }
@@ -77,9 +79,9 @@ public class UndoLogController {
      * 删除
      */
     @RequestMapping("/delete")
-
-    public R delete(@RequestBody Long[] ids) {
-        undoLogService.removeByIds(Arrays.asList(ids));
+//     @RequiresPermissions("product:undolog:delete")
+    public R delete(@RequestBody Long[] ids){
+		undoLogService.removeByIds(Arrays.asList(ids));
 
         return R.ok();
     }
